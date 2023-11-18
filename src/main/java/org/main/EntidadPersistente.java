@@ -1,8 +1,9 @@
 package org.main;
 
-import jakarta.persistence.*;
 
-@Entity
+import javax.persistence.*;
+import javax.persistence.MappedSuperclass;
+
 @MappedSuperclass
 public class EntidadPersistente {
     @Id

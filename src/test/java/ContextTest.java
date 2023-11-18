@@ -1,5 +1,7 @@
 import io.github.flbulgarelli.jpa.extras.test.SimplePersistenceTest;
 import org.junit.jupiter.api.Test;
+
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ContextTest implements SimplePersistenceTest {
@@ -9,11 +11,11 @@ public class ContextTest implements SimplePersistenceTest {
         assertNotNull(entityManager());
     }
 
-
     @Test
     void contextUpWithTransaction() throws Exception {
+        // Iniciar transacción
         withTransaction(() -> {
+            // Lógica dentro de la transacción
         });
     }
-
 }

@@ -1,10 +1,5 @@
 package org.main;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
-
+import javax.persistence.*;
 @Entity
 @Table(name = "especialidad")
 public class Especialidad extends  EntidadPersistente {

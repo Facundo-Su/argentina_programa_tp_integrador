@@ -1,11 +1,12 @@
 package org.main;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,22 +14,24 @@ import java.util.List;
 @Getter
 @Setter
 public class Incidente extends EntidadPersistente{
-
-    @ManyToMany()
+@Transient
+   // @ManyToMany()
     private List<Especialidad> especialidades;
     @Column(name = "descripcion")
     private String descripcion;
     @Column(name = "fechaInicio")
-    private LocalDateTime fechaInicio;
-    @Column(name = "fechaInicio")
-    private LocalDateTime fechaPosibleFinalizacion;
-    @Column(name = "fechaInicio")
-    private LocalDateTime fechaFinalizacion;
-    @Column(name = "fechaInicio")
+    private Date fechaInicio;
+    @Column(name = "fechaPosibleFinalizacion")
+    private Date fechaPosibleFinalizacion;
+    @Column(name = "fechaFinalizacion")
+    private Date fechaFinalizacion;
+
+    @Column(name = "resuelto")
     private boolean resuelto;
 
-    @ManyToOne
-    @JoinColumn(name ="tecnico_id",referencedColumnName = "id")
+    @Transient
+    //@ManyToOne
+    //@JoinColumn(name ="tecnico_id",referencedColumnName = "id")
     private Tecnico tecnico;
 
     public Incidente() {

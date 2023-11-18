@@ -1,9 +1,9 @@
 package org.main;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import javax.persistence.*;
 
+import lombok.Setter;
+import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +14,6 @@ import java.util.List;
 public class Tecnico extends EntidadPersistente{
     @Column(name = "nombre")
     private String nombre;
-    @Column(name = "id_especialidad")
     @ManyToMany()
     private List<Especialidad> especialidades;
     @OneToMany()

@@ -1,6 +1,6 @@
 package org.main;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.main.MedioNotificado.MedioNotificado;
@@ -20,8 +20,9 @@ public class Cliente extends EntidadPersistente{
     @Column(name = "cuit")
     private String cuit;
     @Column(name = "Incidente")
-    @OneToMany()
-    @JoinColumn(name="incidente_id" ,referencedColumnName = "id")
+    @Transient
+    //@OneToMany()
+    //@JoinColumn(name="incidente_id" ,referencedColumnName = "id")
     private List<Incidente> IncidenteContratado;
     @Transient
     private MedioNotificado medioNotificado;
