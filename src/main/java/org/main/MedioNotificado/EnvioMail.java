@@ -6,4 +6,9 @@ public class EnvioMail implements MedioNotificado{
     public void enviarNotificacion() {
 
     }
+
+    @Override
+    public String nombre() {
+        return "Mail";
+    }
 }

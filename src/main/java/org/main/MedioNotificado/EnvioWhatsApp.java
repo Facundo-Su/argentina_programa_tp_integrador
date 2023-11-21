@@ -5,4 +5,9 @@ public class EnvioWhatsApp implements MedioNotificado{
     public void enviarNotificacion() {
 
     }
+
+    @Override
+    public String nombre() {
+        return "WhatsApp";
+    }
 }

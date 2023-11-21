@@ -14,20 +14,17 @@ import java.util.List;
 public class Tecnico extends EntidadPersistente{
     @Column(name = "nombre")
     private String nombre;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Especialidad> especialidades;
-    @OneToMany()
-    private List<Incidente> incidenteAsignado;
+
+    @Column(name = "disponibilidad")
     private Boolean disponibilidad;
 
     public Tecnico() {
         especialidades = new ArrayList<>();
-        incidenteAsignado = new ArrayList<>();
     }
 
-    public void asignarIncidente(Incidente incidente){
-        if(especialidades.containsAll(incidente.getEspecialidades())){
-            incidenteAsignado.add(incidente);
-        }
+    public void agregarEspecialidad(Especialidad especialidad){
+        this.especialidades.add(especialidad);
     }
 }

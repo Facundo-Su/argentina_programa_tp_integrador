@@ -4,6 +4,7 @@ import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.main.MedioNotificado.MedioNotificado;
+import org.main.converter.MedioNotificadoConverter;
 
 import java.util.List;
 
@@ -19,12 +20,11 @@ public class Cliente extends EntidadPersistente{
     private String razonSocial;
     @Column(name = "cuit")
     private String cuit;
-    @Column(name = "Incidente")
-    @Transient
-    //@OneToMany()
-    //@JoinColumn(name="incidente_id" ,referencedColumnName = "id")
+    @OneToMany(cascade =CascadeType.ALL , mappedBy = "cliente",orphanRemoval = true)
     private List<Incidente> IncidenteContratado;
-    @Transient
+    @Column(name = "medioNotificado")
+
+    @Convert(converter = MedioNotificadoConverter.class)
     private MedioNotificado medioNotificado;
 
     public Cliente() {

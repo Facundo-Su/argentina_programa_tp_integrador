@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,26 +15,37 @@ import java.util.List;
 @Getter
 @Setter
 public class Incidente extends EntidadPersistente{
-@Transient
-   // @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="especialidad_id",referencedColumnName = "id")
     private List<Especialidad> especialidades;
+
     @Column(name = "descripcion")
     private String descripcion;
+
     @Column(name = "fechaInicio")
     private Date fechaInicio;
+
     @Column(name = "fechaPosibleFinalizacion")
     private Date fechaPosibleFinalizacion;
+
     @Column(name = "fechaFinalizacion")
     private Date fechaFinalizacion;
 
     @Column(name = "resuelto")
     private boolean resuelto;
 
-    @Transient
-    //@ManyToOne
-    //@JoinColumn(name ="tecnico_id",referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name ="tecnico_id",referencedColumnName = "id")
     private Tecnico tecnico;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_cliente",referencedColumnName = "id")
+    private Cliente cliente;
+
+    public void agregarEspecialidad(Especialidad especialidad){
+        this.especialidades.add(especialidad);
+    }
     public Incidente() {
+        this.especialidades = new ArrayList<>();
     }
 }
