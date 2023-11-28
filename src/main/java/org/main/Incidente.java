@@ -19,6 +19,10 @@ public class Incidente extends EntidadPersistente{
     @JoinColumn(name="especialidad_id",referencedColumnName = "id")
     private List<Especialidad> especialidades;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "servicio_id",referencedColumnName = "id")
+    private Servicio servicio;
+
     @Column(name = "descripcion")
     private String descripcion;
 

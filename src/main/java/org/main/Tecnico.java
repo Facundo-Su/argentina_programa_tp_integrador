@@ -24,6 +24,11 @@ public class Tecnico extends EntidadPersistente{
         especialidades = new ArrayList<>();
     }
 
+    public boolean puedeAdquidirElServicio(Servicio servicio){
+
+        return this.especialidades.containsAll(servicio.getEspecialidadList());
+    }
+
     public void agregarEspecialidad(Especialidad especialidad){
         this.especialidades.add(especialidad);
     }
